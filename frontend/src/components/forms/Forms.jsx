@@ -6,7 +6,7 @@ const Forms = () => {
     return (
         // Some header features
         <div className="bg-[#242424] ">
-            <header className="absolute inset-x-0 top-0 z-50">
+            <header className=" inset-x-0 top-0 z-50">
                 <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
                     <div className="flex lg:flex-1">
                         <a href="#" className="-m-1.5 p-1.5">
@@ -35,7 +35,7 @@ const Forms = () => {
                         }}
                     />
                 </div>
-                <div className='flex flex-row space-x-6 mt-20'>
+                <div className='flex flex-row space-x-6'>
                     <JoinRoomForm />
                     <CreateRoomForm />
                 </div>
