@@ -1,32 +1,31 @@
-// import { useState } from 'react';
-import { useEffect, useRef } from 'react';
-import UserBar from "../userBar/UserBar"
+import { ReactSketchCanvas } from 'react-sketch-canvas';
+import { useRef, useState } from "react";
 
-const Blackboard = () => {
 
-    const canvasRef = useRef(null);
+const Blackboard = ({ style, canvasRef, color, handleUndoClick, handleRedoClick, handleClearClick }) => {
 
-    useEffect(() => {
-        const canvas = canvasRef.current;
-        const resizeCanvas = () => {
-            canvas.width = canvas.offsetWidth;
-            canvas.height = canvas.offsetHeight;
-        };
 
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
+  return (
+    <div>
+      <h1 className=" fixed inset-x-1/4 top-0 text-3xl font-bold text-white pb-2">
+        Black Board Sharing App by Szymon😎🖊️
+        <span className="text-2xl">[Użytkownicy Online: 0]</span>
+      </h1>
 
-        return () => window.removeEventListener('resize', resizeCanvas);
-    }, []);
-
-    return (
-        <div className="h-screen w-full relative">
-            <UserBar />
-            <div className="w-full h-full mt-2 border-[1px] border-white ">
-                <canvas ref={canvasRef} style={{ width: '100%', height: '100%' }} id="canvas"></canvas>
-            </div>
-        </div>
-    )
+      <div className=" w-[200vw] h-[200vh] mt-2 border-[1px] border-white">
+        <ReactSketchCanvas
+          ref={canvasRef}
+          style={style}
+          strokeWidth={4}
+          backgroundImage="#000000"
+          strokeColor={color}
+          handleUndoClick={handleUndoClick}
+          handleRedoClick={handleRedoClick}
+          handleClearClick={handleClearClick}
+        />
+      </div>
+    </div>
+  )
 }
 
 export default Blackboard
